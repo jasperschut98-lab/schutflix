@@ -9,10 +9,16 @@ interface Props {
 const { title, href, icon, description } = Astro.props;
 ---
 
-<a href={href} class="service-card" target="_blank" rel="noopener noreferrer">
-	<div class="icon-container">
-		<img src={icon} alt={`${title} logo`} class="service-icon" />
-	</div>
+<a href={href} class="service-card" target={href.startsWith('/') ? '_self' : '_blank'} rel="noopener noreferrer">
+	{icon ? (
+		<div class="icon-container">
+			<img src={icon} alt={`${title} logo`} class="service-icon" />
+		</div>
+	) : (
+		<div class="icon-container emoji-icon">
+			<span>ℹ️</span>
+		</div>
+	)}
 	<div class="content">
 		<h3>{title}</h3>
 		{description && <p>{description}</p>}

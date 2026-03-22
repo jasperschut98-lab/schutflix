@@ -168,3 +168,222 @@ header {
 		grid-template-columns: 1fr;
 	}
 }
+
+/* Collapsible Developer Section */
+.dev-section {
+	margin-top: 3rem;
+}
+
+.dev-section > summary.section-title {
+	cursor: pointer;
+	list-style: none;
+	user-select: none;
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.125rem;
+	font-weight: 600;
+	margin: 0 0 1.5rem;
+	color: rgba(255, 255, 255, 0.6);
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.75rem 0;
+	transition: color 0.3s ease;
+}
+
+.dev-section > summary.section-title:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.dev-section > summary.section-title::-webkit-details-marker {
+	display: none;
+}
+
+.dev-section > summary.section-title::before {
+	content: '▸';
+	font-size: 0.875rem;
+	transition: transform 0.3s ease;
+	display: inline-block;
+}
+
+.dev-section[open] > summary.section-title::before {
+	transform: rotate(90deg);
+}
+
+.dev-section > summary.section-title::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.dev-section > .services-grid {
+	animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Emoji Icon Fallback */
+.emoji-icon {
+	font-size: 1.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ========================================
+   FAQ / Info Page Styles
+   ======================================== */
+
+.faq-container {
+	animation: fadeIn 0.5s ease-out forwards !important;
+	opacity: 0;
+}
+
+.back-link {
+	display: inline-block;
+	color: var(--netflix-red);
+	text-decoration: none;
+	font-family: 'Outfit', sans-serif;
+	font-weight: 600;
+	font-size: 0.9375rem;
+	margin-bottom: 2rem;
+	transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+	opacity: 0.7;
+}
+
+.faq-header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.faq-header h1 {
+	font-family: 'Outfit', sans-serif;
+	font-size: 2.25rem;
+	font-weight: 600;
+	margin: 0 0 0.5rem;
+	color: var(--text-color);
+}
+
+.faq-content {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.faq-item {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 8px;
+	overflow: hidden;
+	transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+	border-color: rgba(255, 255, 255, 0.15);
+}
+
+.faq-item > summary {
+	padding: 1.25rem 1.5rem;
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.0625rem;
+	font-weight: 600;
+	cursor: pointer;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--text-color);
+	transition: background 0.3s ease;
+}
+
+.faq-item > summary:hover {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.faq-item > summary::-webkit-details-marker {
+	display: none;
+}
+
+.faq-answer {
+	padding: 0 1.5rem 1.5rem;
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 0.9375rem;
+	line-height: 1.7;
+}
+
+.faq-answer h4 {
+	color: var(--text-color);
+	font-family: 'Outfit', sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	margin: 1.5rem 0 0.5rem;
+}
+
+.faq-answer ol,
+.faq-answer ul {
+	padding-left: 1.5rem;
+	margin: 0.5rem 0;
+}
+
+.faq-answer li {
+	margin-bottom: 0.5rem;
+}
+
+.faq-answer a {
+	color: var(--netflix-red);
+	text-decoration: none;
+	font-weight: 500;
+	transition: opacity 0.3s ease;
+}
+
+.faq-answer a:hover {
+	opacity: 0.7;
+	text-decoration: underline;
+}
+
+.faq-answer code {
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.2em 0.5em;
+	border-radius: 4px;
+	font-size: 0.875em;
+	color: var(--netflix-red);
+}
+
+.faq-tip {
+	background: rgba(229, 9, 20, 0.08);
+	border-left: 3px solid var(--netflix-red);
+	padding: 1rem 1.25rem;
+	border-radius: 0 6px 6px 0;
+	margin-top: 1rem;
+	font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+	.faq-header h1 {
+		font-size: 1.75rem;
+	}
+
+	.faq-item > summary {
+		padding: 1rem 1.25rem;
+		font-size: 0.9375rem;
+	}
+
+	.faq-answer {
+		padding: 0 1.25rem 1.25rem;
+		font-size: 0.875rem;
+	}
+}
