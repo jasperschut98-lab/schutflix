@@ -37,33 +37,32 @@ body {
 }
 
 .intro-logo-img {
-	width: 800px;
-	max-width: 90%;
+	width: 1000px; /* Even larger */
+	max-width: 95%;
 	opacity: 0;
 	transform: scale(0.6);
-	animation: logoIntro 2.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-	/* Removed drop-shadow to avoid black box issues if image has white background */
+	animation: logoIntro 3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 @keyframes logoIntro {
 	0% {
-		transform: scale(0.4);
+		transform: scale(0.3);
 		opacity: 0;
-		filter: blur(15px);
+		filter: blur(20px);
 	}
 	20% {
 		opacity: 1;
 		filter: blur(0);
 	}
 	80% {
-		transform: scale(1);
+		transform: scale(1.1);
 		opacity: 1;
 		filter: blur(0);
 	}
 	100% {
-		transform: scale(1.2);
+		transform: scale(1.4);
 		opacity: 0;
-		filter: blur(30px);
+		filter: blur(40px);
 	}
 }
 
@@ -78,7 +77,7 @@ body {
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 3rem 2rem;
+	padding: 2rem; /* Reduced padding */
 	opacity: 0;
 	animation: fadeIn 1s ease-out 3.5s forwards;
 }
@@ -89,19 +88,28 @@ body {
 
 header {
 	text-align: center;
-	margin-bottom: 5rem;
+	margin-bottom: 2rem; /* Significantly reduced margin */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .logo-container {
-	display: inline-block;
-	max-width: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
+	max-width: 800px; /* Larger container */
+	height: 200px; /* Fixed height to control cropping */
+	overflow: hidden; /* This crops the logo whitespace */
+	margin-bottom: -2rem; /* Pull subtitle closer */
 }
 
 .hero-logo {
-	width: 100%;
+	width: 120%; /* Scale up to fill and crop sides/top */
 	height: auto;
-	filter: drop-shadow(0 0 15px rgba(229, 9, 20, 0.2));
+	transform: scale(1.4); /* Zoom in on the text part */
+	filter: drop-shadow(0 0 20px rgba(229, 9, 20, 0.1));
 	transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
