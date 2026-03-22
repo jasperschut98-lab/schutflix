@@ -22,55 +22,63 @@ const { title, href, icon, description } = Astro.props;
 <style>
 	.service-card {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: center;
-		padding: 2.5rem 1.5rem;
+		padding: 1.25rem;
 		background: rgba(255, 255, 255, 0.03);
 		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: 12px;
+		border-radius: 8px;
 		text-decoration: none;
 		color: white;
-		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 		backdrop-filter: blur(12px);
-		text-align: center;
+		gap: 1.25rem;
 		height: 100%;
 	}
 
 	.service-card:hover {
 		background: rgba(255, 255, 255, 0.08);
 		border-color: rgba(255, 255, 255, 0.2);
-		transform: translateY(-8px) scale(1.02);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+		transform: translateY(-4px) scale(1.01);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 	}
 
 	.icon-container {
-		width: 64px;
-		height: 64px;
+		width: 48px;
+		height: 48px;
+		min-width: 48px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 1.5rem;
 	}
 
 	.service-icon {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
-		filter: drop-shadow(0 0 8px rgba(0,0,0,0.3));
+		filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
+	}
+
+	.content {
+		text-align: left;
 	}
 
 	.content h3 {
 		font-family: 'Outfit', sans-serif;
-		font-size: 1.25rem;
+		font-size: 1.125rem;
 		font-weight: 600;
-		margin: 0 0 0.5rem;
+		margin: 0 0 0.25rem;
 		letter-spacing: -0.01em;
 	}
 
 	.content p {
-		font-size: 0.875rem;
-		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.8125rem;
+		color: rgba(255, 255, 255, 0.4);
 		margin: 0;
-		line-height: 1.5;
+		line-height: 1.3;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 </style>
