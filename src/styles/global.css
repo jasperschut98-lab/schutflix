@@ -387,3 +387,206 @@ header {
 		font-size: 0.875rem;
 	}
 }
+
+/* ========================================
+   Welcome Popup & Contact Modal
+   ======================================== */
+
+.popup-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	backdrop-filter: blur(8px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2000;
+	animation: popupFadeIn 0.3s ease-out;
+	padding: 1.5rem;
+}
+
+@keyframes popupFadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.popup-card {
+	background: #141414;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	padding: 2.5rem;
+	max-width: 480px;
+	width: 100%;
+	position: relative;
+	animation: popupSlideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes popupSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.popup-card h2 {
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin: 0 0 1rem;
+	color: var(--text-color);
+}
+
+.popup-card p {
+	font-size: 0.9375rem;
+	color: rgba(255, 255, 255, 0.7);
+	line-height: 1.6;
+	margin: 0 0 0.75rem;
+}
+
+.popup-card a {
+	color: var(--netflix-red);
+	text-decoration: none;
+}
+
+.popup-card a:hover {
+	text-decoration: underline;
+}
+
+.popup-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: none;
+	border: none;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 1.25rem;
+	cursor: pointer;
+	padding: 0.25rem;
+	transition: color 0.2s ease;
+	line-height: 1;
+}
+
+.popup-close:hover {
+	color: var(--text-color);
+}
+
+.popup-btn {
+	display: inline-block;
+	background: var(--netflix-red);
+	color: white;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 6px;
+	font-family: 'Outfit', sans-serif;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	margin-top: 0.5rem;
+	width: 100%;
+}
+
+.popup-btn:hover {
+	background: #c4070f;
+	transform: translateY(-1px);
+}
+
+/* Contact Form */
+.contact-card {
+	max-width: 520px;
+}
+
+#contact-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-top: 1rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 6px;
+	padding: 0.75rem 1rem;
+	color: var(--text-color);
+	font-family: 'Inter', sans-serif;
+	font-size: 0.9375rem;
+	transition: border-color 0.2s ease;
+	outline: none;
+	resize: vertical;
+}
+
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
+	color: rgba(255, 255, 255, 0.3);
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+	border-color: var(--netflix-red);
+}
+
+.contact-success {
+	text-align: center;
+	font-size: 1rem;
+	color: rgba(255, 255, 255, 0.8);
+	margin-top: 1rem;
+}
+
+/* Contact trigger card (inline in grid) */
+.contact-trigger {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 1.25rem;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 8px;
+	text-decoration: none;
+	color: white;
+	transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+	backdrop-filter: blur(12px);
+	gap: 1.25rem;
+	height: 100%;
+	cursor: pointer;
+}
+
+.contact-trigger:hover {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.2);
+	transform: translateY(-4px) scale(1.01);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.contact-trigger .content h3 {
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.125rem;
+	font-weight: 600;
+	margin: 0 0 0.25rem;
+	letter-spacing: -0.01em;
+}
+
+.contact-trigger .content p {
+	font-size: 0.8125rem;
+	color: rgba(255, 255, 255, 0.4);
+	margin: 0;
+	line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+	.popup-card {
+		padding: 2rem 1.5rem;
+	}
+
+	.popup-card h2 {
+		font-size: 1.25rem;
+	}
+}

@@ -17,6 +17,33 @@ import '../styles/global.css';
 			<img src="/logo.png" alt="Schutflix Logo" class="intro-logo-img" id="intro-logo" />
 		</div>
 
+		<!-- Welcome Popup -->
+		<div id="welcome-popup" class="popup-overlay" style="display:none;">
+			<div class="popup-card">
+				<button class="popup-close" id="welcome-close" aria-label="Sluiten">✕</button>
+				<h2>Welkom bij Schutflix! 👋</h2>
+				<p>Schutflix is ons eigen media-platform. Hier kun je films en series kijken, audioboeken luisteren en meer – allemaal vanuit één plek.</p>
+				<p>Eerste keer hier? Bekijk de <a href="/info"><strong>Info & hulp</strong></a> pagina voor een korte uitleg en stap-voor-stap handleidingen.</p>
+				<button class="popup-btn" id="welcome-dismiss">Begrepen, aan de slag!</button>
+			</div>
+		</div>
+
+		<!-- Contact Modal -->
+		<div id="contact-modal" class="popup-overlay" style="display:none;">
+			<div class="popup-card contact-card">
+				<button class="popup-close" id="contact-close" aria-label="Sluiten">✕</button>
+				<h2>📬 Neem contact op</h2>
+				<p>Heb je een vraag, probleem, of suggestie? Stuur een bericht!</p>
+				<form id="contact-form">
+					<input type="text" name="name" placeholder="Je naam" required />
+					<input type="email" name="email" placeholder="Je e-mailadres" required />
+					<textarea name="message" placeholder="Je bericht..." rows="4" required></textarea>
+					<button type="submit" class="popup-btn">Verstuur bericht</button>
+				</form>
+				<p id="contact-success" class="contact-success" style="display:none;">✅ Je bericht is verzonden! We nemen zo snel mogelijk contact met je op.</p>
+			</div>
+		</div>
+
 		<div class="container">
 			<header>
 				<div class="logo-container">
@@ -29,15 +56,15 @@ import '../styles/global.css';
 				<div class="services-grid">
 					<ServiceCard 
 						title="Jellyfin" 
-						href="https://watch.schutflix.nl" 
+						href="http://watch.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/jellyfin"
 						description="Kijk films en series – net als Netflix, maar dan van ons."
 					/>
 					<ServiceCard 
 						title="Audiobookshelf" 
-						href="https://books.schutflix.nl" 
+						href="http://books.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/audiobookshelf"
-						description="Luister audioboeken en podcasts op je telefoon."
+						description="Luister audioboeken en podcasts via de app of in je browser."
 					/>
 					<ServiceCard 
 						title="Immich" 
@@ -47,16 +74,23 @@ import '../styles/global.css';
 					/>
 					<ServiceCard 
 						title="Seerr" 
-						href="https://request.schutflix.nl" 
+						href="http://request.schutflix.nl" 
 						icon="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/overseerr.svg"
 						description="Mis je een film of serie? Vraag 'm hier aan!"
 					/>
 					<ServiceCard 
-						title="Info & Hulp" 
+						title="Info & hulp" 
 						href="/info" 
 						icon=""
 						description="Handleidingen, veelgestelde vragen en hulp."
 					/>
+					<a href="#" class="service-card contact-trigger" id="contact-btn">
+						<div class="icon-container emoji-icon"><span>📬</span></div>
+						<div class="content">
+							<h3>Contact</h3>
+							<p>Stuur een bericht of stel een vraag.</p>
+						</div>
+					</a>
 				</div>
 
 				<details class="dev-section">
@@ -100,11 +134,67 @@ import '../styles/global.css';
 		</div>
 
 		<script>
-			// Optional: Remove splash screen from DOM after animation
+			// Remove splash screen after animation
 			setTimeout(() => {
 				const splash = document.getElementById('splash-screen');
 				if (splash) splash.style.display = 'none';
 			}, 5000);
+
+			// Welcome popup - show after intro, only once per session
+			setTimeout(() => {
+				if (!sessionStorage.getItem('welcomeDismissed')) {
+					const popup = document.getElementById('welcome-popup');
+					if (popup) popup.style.display = 'flex';
+				}
+			}, 4500);
+
+			document.getElementById('welcome-close')?.addEventListener('click', () => {
+				document.getElementById('welcome-popup').style.display = 'none';
+				sessionStorage.setItem('welcomeDismissed', 'true');
+			});
+			document.getElementById('welcome-dismiss')?.addEventListener('click', () => {
+				document.getElementById('welcome-popup').style.display = 'none';
+				sessionStorage.setItem('welcomeDismissed', 'true');
+			});
+
+			// Contact modal
+			document.getElementById('contact-btn')?.addEventListener('click', (e) => {
+				e.preventDefault();
+				document.getElementById('contact-modal').style.display = 'flex';
+			});
+			document.getElementById('contact-close')?.addEventListener('click', () => {
+				document.getElementById('contact-modal').style.display = 'none';
+			});
+
+			// Close modals on overlay click
+			document.querySelectorAll('.popup-overlay').forEach(overlay => {
+				overlay.addEventListener('click', (e) => {
+					if (e.target === overlay) {
+						overlay.style.display = 'none';
+						if (overlay.id === 'welcome-popup') {
+							sessionStorage.setItem('welcomeDismissed', 'true');
+						}
+					}
+				});
+			});
+
+			// Contact form submission
+			document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				const form = e.target;
+				const data = new FormData(form);
+				
+				try {
+					await fetch('https://formsubmit.co/ajax/schut98@outlook.com', {
+						method: 'POST',
+						body: data
+					});
+					form.style.display = 'none';
+					document.getElementById('contact-success').style.display = 'block';
+				} catch (err) {
+					alert('Er ging iets mis. Probeer het later opnieuw.');
+				}
+			});
 		</script>
 	</body>
 </html>
