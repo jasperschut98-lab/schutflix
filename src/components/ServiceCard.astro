@@ -13,22 +13,27 @@ const { title, href, icon, description } = Astro.props;
 	<div class="icon-container">
 		<img src={icon} alt={`${title} logo`} class="service-icon" />
 	</div>
+	<div class="content">
+		<h3>{title}</h3>
+		{description && <p>{description}</p>}
+	</div>
 </a>
 
 <style>
 	.service-card {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		padding: 2rem;
+		padding: 2.5rem 1.5rem;
 		background: rgba(255, 255, 255, 0.03);
 		border: 1px solid rgba(255, 255, 255, 0.08);
-		border-radius: 16px;
+		border-radius: 12px;
 		text-decoration: none;
 		color: white;
 		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 		backdrop-filter: blur(12px);
-		aspect-ratio: 1 / 1;
+		text-align: center;
+		height: 100%;
 	}
 
 	.service-card:hover {
@@ -39,17 +44,33 @@ const { title, href, icon, description } = Astro.props;
 	}
 
 	.icon-container {
-		width: 100%;
-		height: 100%;
+		width: 64px;
+		height: 64px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-bottom: 1.5rem;
 	}
 
 	.service-icon {
-		width: 80%;
-		height: 80%;
+		width: 100%;
+		height: 100%;
 		object-fit: contain;
 		filter: drop-shadow(0 0 8px rgba(0,0,0,0.3));
+	}
+
+	.content h3 {
+		font-family: 'Outfit', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin: 0 0 0.5rem;
+		letter-spacing: -0.01em;
+	}
+
+	.content p {
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.5);
+		margin: 0;
+		line-height: 1.5;
 	}
 </style>

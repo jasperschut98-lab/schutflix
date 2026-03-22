@@ -10,14 +10,18 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Schutflix | Home</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
+		<!-- Intro Animation Splash Screen -->
+		<div id="splash-screen">
+			<h1 class="intro-logo">SCHUTFLIX</h1>
+		</div>
+
 		<div class="container">
 			<header>
-				<h1 class="main-title">SCHUTFLIX</h1>
+				<div class="logo-container">
+					<h1 class="main-title">SCHUTFLIX</h1>
+				</div>
 				<p class="subtitle">Personal Media Hub</p>
 			</header>
 
@@ -27,53 +31,70 @@ import '../styles/global.css';
 						title="Jellyfin" 
 						href="https://watch.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/jellyfin"
+						description="Verzamel en stream al je films en series op elk apparaat."
 					/>
 					<ServiceCard 
 						title="Audiobookshelf" 
 						href="https://books.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/audiobookshelf"
+						description="Je eigen bibliotheek voor audioboeken en podcasts."
 					/>
 					<ServiceCard 
 						title="Immich" 
 						href="https://fotos.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/immich"
+						description="Beheer en deel je foto's veilig op je eigen server."
 					/>
 					<ServiceCard 
-						title="Overseerr" 
+						title="Seerr" 
 						href="https://requests.schutflix.nl" 
 						icon="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/overseerr.svg"
+						description="Ontdek en vraag eenvoudig nieuwe media aan."
 					/>
 				</div>
 
-				<h2 class="section-title">Developer <span>Tools</span></h2>
-				<div class="services-grid mini">
+				<h2 class="section-title">Developer Tools</h2>
+				<div class="services-grid">
 					<ServiceCard 
 						title="Sonarr" 
 						href="https://sonarr.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/sonarr"
+						description="Automatiseer en beheer je TV-series collectie."
 					/>
 					<ServiceCard 
 						title="Radarr" 
 						href="https://radarr.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/radarr"
+						description="Vind en download automatisch je favoriete films."
 					/>
 					<ServiceCard 
 						title="Prowlarr" 
 						href="https://prowlarr.schutflix.nl" 
 						icon="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/prowlarr.svg"
+						description="Beheer al je media indexers op één plek."
 					/>
 					<ServiceCard 
 						title="JellyStat" 
 						href="https://stats.schutflix.nl" 
 						icon="https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellystat.svg"
+						description="Inzichtelijke statistieken voor je Jellyfin server."
 					/>
 					<ServiceCard 
 						title="qBittorrent" 
 						href="https://qbit.schutflix.nl" 
 						icon="https://cdn.simpleicons.org/qbittorrent"
+						description="Je centrale beheer voor media downloads."
 					/>
 				</div>
 			</main>
 		</div>
+
+		<script>
+			// Optional: Remove splash screen from DOM after animation
+			setTimeout(() => {
+				const splash = document.getElementById('splash-screen');
+				if (splash) splash.style.display = 'none';
+			}, 5000);
+		</script>
 	</body>
 </html>

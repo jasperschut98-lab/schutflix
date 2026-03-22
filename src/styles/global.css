@@ -1,9 +1,11 @@
 :root {
 	--bg-color: #050505;
+	--netflix-red: #e50914;
 	--text-color: #ffffff;
-	--accent-color: #e50914;
 	--grid-gap: 2rem;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600&family=Inter:wght@400;500&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -16,12 +18,77 @@ body {
 	color: var(--text-color);
 	font-family: 'Inter', sans-serif;
 	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
 }
 
+/* Splash Screen / Intro Animation */
+#splash-screen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	animation: fadeOut 1s ease-in-out 3.5s forwards;
+}
+
+.intro-logo {
+	font-family: 'Bebas Neue', sans-serif;
+	font-size: 8rem;
+	color: var(--netflix-red);
+	letter-spacing: 4px;
+	transform: scale(0.8);
+	opacity: 0;
+	animation: netflixIntro 3s ease-in-out forwards;
+	text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+}
+
+@keyframes netflixIntro {
+	0% {
+		transform: scale(0.5);
+		opacity: 0;
+		letter-spacing: -20px;
+		filter: blur(10px);
+	}
+	20% {
+		opacity: 1;
+		filter: blur(0);
+	}
+	80% {
+		transform: scale(1.1);
+		letter-spacing: 15px;
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1.5);
+		letter-spacing: 20px;
+		opacity: 0;
+		filter: blur(20px);
+	}
+}
+
+@keyframes fadeOut {
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+/* Main Content */
 .container {
-	max-width: 1000px;
+	max-width: 1100px;
 	margin: 0 auto;
-	padding: 6rem 2rem;
+	padding: 4rem 2rem;
+	opacity: 0;
+	animation: fadeIn 1s ease-out 4s forwards;
+}
+
+@keyframes fadeIn {
+	to { opacity: 1; }
 }
 
 header {
@@ -29,82 +96,77 @@ header {
 	margin-bottom: 6rem;
 }
 
+.logo-container {
+	display: inline-block;
+	perspective: 1000px;
+}
+
 .main-title {
-	font-family: 'Outfit', sans-serif;
-	font-size: 5rem;
-	font-weight: 800;
+	font-family: 'Bebas Neue', sans-serif;
+	font-size: 6rem;
+	color: var(--netflix-red);
 	margin: 0;
 	padding: 0;
-	letter-spacing: 0.1em;
-	background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.4) 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	line-height: 1;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	transform: scaleX(1.1) rotateX(10deg);
+	filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.3));
+	transition: transform 0.3s ease;
+}
+
+.main-title:hover {
+	transform: scaleX(1.1) rotateX(0deg) scale(1.05);
 }
 
 .subtitle {
 	font-family: 'Outfit', sans-serif;
-	font-size: 1.125rem;
+	font-size: 1rem;
 	font-weight: 300;
 	color: rgba(255, 255, 255, 0.4);
 	text-transform: uppercase;
-	letter-spacing: 0.4em;
-	margin-top: 1.5rem;
+	letter-spacing: 0.5em;
+	margin-top: 1rem;
 }
 
 .services-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	gap: var(--grid-gap);
-}
-
-.services-grid.mini {
-	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
 
 .section-title {
 	font-family: 'Outfit', sans-serif;
-	font-size: 1rem;
-	font-weight: 500;
+	font-size: 1.25rem;
+	font-weight: 600;
 	margin: 6rem 0 2rem;
-	color: rgba(255, 255, 255, 0.3);
-	text-transform: uppercase;
-	letter-spacing: 0.2em;
+	color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: 1.5rem;
 }
 
 .section-title::after {
 	content: '';
 	flex: 1;
 	height: 1px;
-	background: rgba(255, 255, 255, 0.1);
-}
-
-.section-title span {
-	font-family: 'Inter', sans-serif;
-	font-size: 0.75rem;
-	background: rgba(255, 255, 255, 0.05);
-	padding: 0.2rem 0.6rem;
-	border-radius: 4px;
-	letter-spacing: normal;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent);
 }
 
 @media (max-width: 768px) {
 	.main-title {
-		font-size: 3rem;
+		font-size: 4rem;
 	}
 	
+	.intro-logo {
+		font-size: 4rem;
+	}
+
 	.container {
-		padding: 4rem 1.5rem;
+		padding: 3rem 1.5rem;
 	}
 
 	.services-grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	
-	.services-grid.mini {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: 1fr;
 	}
 }
