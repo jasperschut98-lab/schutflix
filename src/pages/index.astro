@@ -142,7 +142,7 @@ import '../styles/global.css';
 
 			// Welcome popup - show after intro, only once per session
 			setTimeout(() => {
-				if (!sessionStorage.getItem('welcomeDismissed')) {
+				if (!localStorage.getItem('welcomeDismissed')) {
 					const popup = document.getElementById('welcome-popup');
 					if (popup) popup.style.display = 'flex';
 				}
@@ -150,11 +150,11 @@ import '../styles/global.css';
 
 			document.getElementById('welcome-close')?.addEventListener('click', () => {
 				document.getElementById('welcome-popup').style.display = 'none';
-				sessionStorage.setItem('welcomeDismissed', 'true');
+				localStorage.setItem('welcomeDismissed', 'true');
 			});
 			document.getElementById('welcome-dismiss')?.addEventListener('click', () => {
 				document.getElementById('welcome-popup').style.display = 'none';
-				sessionStorage.setItem('welcomeDismissed', 'true');
+				localStorage.setItem('welcomeDismissed', 'true');
 			});
 
 			// Contact modal
@@ -172,7 +172,7 @@ import '../styles/global.css';
 					if (e.target === overlay) {
 						overlay.style.display = 'none';
 						if (overlay.id === 'welcome-popup') {
-							sessionStorage.setItem('welcomeDismissed', 'true');
+							localStorage.setItem('welcomeDismissed', 'true');
 						}
 					}
 				});
