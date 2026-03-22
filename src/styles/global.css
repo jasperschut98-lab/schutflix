@@ -88,7 +88,7 @@ body {
 
 header {
 	text-align: center;
-	margin-bottom: 2rem; 
+	margin-bottom: 1rem; 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -100,7 +100,7 @@ header {
 	align-items: center;
 	width: 100%;
 	max-width: 600px; 
-	margin-bottom: 1rem; 
+	margin-bottom: 0; 
 }
 
 .hero-logo {
@@ -120,7 +120,7 @@ header {
 	color: rgba(255, 255, 255, 0.3);
 	text-transform: uppercase;
 	letter-spacing: 0.6em;
-	margin-top: 1rem;
+	margin-top: 0.25rem;
 }
 
 .services-grid {
