@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "schutflix.vercel.app"
+        }
+      ],
+      "destination": "https://schutflix.nl/:path*",
+      "permanent": true
+    }
+  ]
+}
