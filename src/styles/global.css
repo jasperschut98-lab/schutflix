@@ -42,7 +42,7 @@ body {
 	opacity: 0;
 	transform: scale(0.6);
 	animation: logoIntro 2.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-	filter: drop-shadow(0 0 30px rgba(229, 9, 20, 0.4));
+	/* Removed drop-shadow to avoid black box issues if image has white background */
 }
 
 @keyframes logoIntro {
