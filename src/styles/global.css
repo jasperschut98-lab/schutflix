@@ -37,8 +37,8 @@ body {
 }
 
 .intro-logo-img {
-	width: 400px;
-	max-width: 80%;
+	width: 800px;
+	max-width: 90%;
 	opacity: 0;
 	transform: scale(0.6);
 	animation: logoIntro 2.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
@@ -47,23 +47,23 @@ body {
 
 @keyframes logoIntro {
 	0% {
-		transform: scale(0.5);
+		transform: scale(0.4);
 		opacity: 0;
-		filter: blur(10px) drop-shadow(0 0 0px var(--netflix-red));
+		filter: blur(15px);
 	}
 	20% {
 		opacity: 1;
-		filter: blur(0) drop-shadow(0 0 20px rgba(229, 9, 20, 0.4));
+		filter: blur(0);
 	}
 	80% {
-		transform: scale(1.1);
+		transform: scale(1);
 		opacity: 1;
 		filter: blur(0);
 	}
 	100% {
-		transform: scale(1.4);
+		transform: scale(1.2);
 		opacity: 0;
-		filter: blur(20px);
+		filter: blur(30px);
 	}
 }
 
@@ -94,7 +94,7 @@ header {
 
 .logo-container {
 	display: inline-block;
-	max-width: 300px;
+	max-width: 600px;
 	width: 100%;
 }
 
