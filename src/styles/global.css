@@ -1,0 +1,110 @@
+:root {
+	--bg-color: #050505;
+	--text-color: #ffffff;
+	--accent-color: #e50914;
+	--grid-gap: 2rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	font-family: 'Inter', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 6rem 2rem;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 6rem;
+}
+
+.main-title {
+	font-family: 'Outfit', sans-serif;
+	font-size: 5rem;
+	font-weight: 800;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 0.1em;
+	background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.4) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	line-height: 1;
+}
+
+.subtitle {
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.125rem;
+	font-weight: 300;
+	color: rgba(255, 255, 255, 0.4);
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+	margin-top: 1.5rem;
+}
+
+.services-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: var(--grid-gap);
+}
+
+.services-grid.mini {
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.section-title {
+	font-family: 'Outfit', sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	margin: 6rem 0 2rem;
+	color: rgba(255, 255, 255, 0.3);
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.section-title::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.section-title span {
+	font-family: 'Inter', sans-serif;
+	font-size: 0.75rem;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 0.2rem 0.6rem;
+	border-radius: 4px;
+	letter-spacing: normal;
+}
+
+@media (max-width: 768px) {
+	.main-title {
+		font-size: 3rem;
+	}
+	
+	.container {
+		padding: 4rem 1.5rem;
+	}
+
+	.services-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	
+	.services-grid.mini {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

@@ -1,0 +1,55 @@
+---
+interface Props {
+	title: string;
+	href: string;
+	icon: string;
+	description?: string;
+}
+
+const { title, href, icon, description } = Astro.props;
+---
+
+<a href={href} class="service-card" target="_blank" rel="noopener noreferrer">
+	<div class="icon-container">
+		<img src={icon} alt={`${title} logo`} class="service-icon" />
+	</div>
+</a>
+
+<style>
+	.service-card {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		background: rgba(255, 255, 255, 0.03);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 16px;
+		text-decoration: none;
+		color: white;
+		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		backdrop-filter: blur(12px);
+		aspect-ratio: 1 / 1;
+	}
+
+	.service-card:hover {
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.2);
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+	}
+
+	.icon-container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.service-icon {
+		width: 80%;
+		height: 80%;
+		object-fit: contain;
+		filter: drop-shadow(0 0 8px rgba(0,0,0,0.3));
+	}
+</style>

@@ -1,17 +1,79 @@
 ---
-
+import ServiceCard from '../components/ServiceCard.astro';
+import '../styles/global.css';
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="nl">
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Schutflix | Home</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div class="container">
+			<header>
+				<h1 class="main-title">SCHUTFLIX</h1>
+				<p class="subtitle">Personal Media Hub</p>
+			</header>
+
+			<main>
+				<div class="services-grid">
+					<ServiceCard 
+						title="Jellyfin" 
+						href="https://watch.schutflix.nl" 
+						icon="https://cdn.simpleicons.org/jellyfin"
+					/>
+					<ServiceCard 
+						title="Audiobookshelf" 
+						href="https://books.schutflix.nl" 
+						icon="https://cdn.simpleicons.org/audiobookshelf"
+					/>
+					<ServiceCard 
+						title="Immich" 
+						href="https://fotos.schutflix.nl" 
+						icon="https://cdn.simpleicons.org/immich"
+					/>
+					<ServiceCard 
+						title="Overseerr" 
+						href="https://requests.schutflix.nl" 
+						icon="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/overseerr.svg"
+					/>
+				</div>
+
+				<h2 class="section-title">Developer <span>Tools</span></h2>
+				<div class="services-grid mini">
+					<ServiceCard 
+						title="Sonarr" 
+						href="https://sonarr.schutflix.nl" 
+						icon="https://cdn.simpleicons.org/sonarr"
+					/>
+					<ServiceCard 
+						title="Radarr" 
+						href="https://radarr.schutflix.nl" 
+						icon="https://cdn.simpleicons.org/radarr"
+					/>
+					<ServiceCard 
+						title="Prowlarr" 
+						href="https://prowlarr.schutflix.nl" 
+						icon="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/prowlarr.svg"
+					/>
+					<ServiceCard 
+						title="JellyStat" 
+						href="https://stats.schutflix.nl" 
+						icon="https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/jellystat.svg"
+					/>
+					<ServiceCard 
+						title="qBittorrent" 
+						href="https://qbit.schutflix.nl" 
+						icon="https://cdn.simpleicons.org/qbittorrent"
+					/>
+				</div>
+			</main>
+		</div>
 	</body>
 </html>
